@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  my-database:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: movie_db
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    ports:
+    - "8080:8080"
+    depends_on:
+      - my-database
+    restart: always
