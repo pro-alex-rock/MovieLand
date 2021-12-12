@@ -1,5 +1,7 @@
 package com.configuration;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -9,7 +11,7 @@ import javax.servlet.ServletException;
 public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{RootConfig.class};
     }
 
     @Override
@@ -31,5 +33,21 @@ public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationCon
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null, true, "/*");
+    }
+
+    @Override
+    protected WebApplicationContext createRootApplicationContext() {
+        AnnotationConfigWebApplicationContext rootContext
+                = new AnnotationConfigWebApplicationContext();
+        rootContext.register(RootConfig.class);
+        return rootContext;
+    }
+
+    @Override
+    protected WebApplicationContext createServletApplicationContext() {
+        AnnotationConfigWebApplicationContext webAppContext
+                = new AnnotationConfigWebApplicationContext();
+        webAppContext.register(SpringConfig.class);
+        return webAppContext;
     }
 }
