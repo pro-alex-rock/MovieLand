@@ -1,6 +1,5 @@
 package com.web.filter;
 
-import com.web.controller.MovieController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;

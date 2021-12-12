@@ -5,10 +5,8 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-public class Person {
+public class Poster {
     private int id;
-    private String name;
-    private String password;
-    private String sole;
-    private Role role;
+    private  int movieId;
+    private String posterLink;
 }

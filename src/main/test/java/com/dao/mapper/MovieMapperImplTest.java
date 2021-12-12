@@ -1,4 +1,4 @@
-package com.web.controller;
+package com.dao.mapper;
 
 import com.dao.MovieDao;
 import com.dto.MovieDto;
@@ -10,11 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MovieControllerTest {
+class MovieMapperImplTest {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -22,6 +21,8 @@ class MovieControllerTest {
     private MovieDao movieDao;
     @Autowired
     private MovieService movieService;
+    @Autowired
+    private MovieMapper movieMapper;
 
     @Test
     public void shouldGetMovieFromDB() {
@@ -36,19 +37,9 @@ class MovieControllerTest {
         movie.setPrice(new BigDecimal(10));
         movie.setPosterLink("Poster_link");
 
-        MovieDto expectedMovieDto = new MovieDto();
-        expectedMovieDto.setTitleRussianMovie("Название");
-        expectedMovieDto.setTitleNativeMovie("Title");
-        expectedMovieDto.setYearOfRelease(2000);
-        expectedMovieDto.setRating(8.0);
-        expectedMovieDto.setPrice(new BigDecimal(10));
-
-        movieService.addMovie(movie);
-        List<MovieDto> movieDtos = movieService.getAll();
-        MovieDto actualMovieDto = movieDtos.get(0);
-
-        assertTrue(movieDtos.size() > 0);
-        assertEquals(expectedMovieDto, actualMovieDto);
+        MovieDto movieDto = movieMapper.toDto(movie);
+        MovieDto actualMovie = movieService.getAll().get(0);
+        assertEquals(movieDto, actualMovie);
     }
 
 }
