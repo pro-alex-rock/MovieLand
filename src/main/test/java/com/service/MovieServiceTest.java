@@ -15,12 +15,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(SpringExtension.class)
@@ -29,6 +29,7 @@ import static org.mockito.Mockito.when;
 class MovieServiceTest {
 
     private MovieDao movieDao = mock(MovieDao.class);
+    private DataSource dataSource = mock(DataSource.class);
     @Autowired
     private MovieService movieService;
 
@@ -56,6 +57,8 @@ class MovieServiceTest {
         when(movieDao.getAllMovie()).thenReturn(Optional.of(List.of(movie)));
         List<MovieDto> actualMoviesDto = movieService.getAll();
         Assertions.assertEquals(expectedMoviesDto, actualMoviesDto);
+        Assertions.assertEquals(expectedMoviesDto.size(), actualMoviesDto.size());
+        verify(movieService, times(1));
     }
 
 }
