@@ -13,7 +13,7 @@ public class Movie {
     private String titleNativeMovie;
     private int yearOfRelease;
     private String country;
-    private Genre genre;
+    private String genre;
     private String description;
     private double rating;
     private BigDecimal price;
@@ -59,11 +59,11 @@ public class Movie {
         this.country = country;
     }
 
-    public Genre getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 

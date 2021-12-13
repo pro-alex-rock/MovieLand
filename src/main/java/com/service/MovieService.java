@@ -24,7 +24,7 @@ public class MovieService {
     }
 
     public List<MovieDto> getAll() {
-        Optional<List<Movie>> optionalMovies = movieDao.getAll();
+        Optional<List<Movie>> optionalMovies = movieDao.getAllMovieDto();
         List<MovieDto> movieDtos = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
@@ -32,7 +32,7 @@ public class MovieService {
                 movieDtos.add(movieMapper.toDto(movie));
             }
         }
-
+        logger.info("Delivered Movies: {}", movieDtos);
         return movieDtos;
     }
 

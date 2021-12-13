@@ -22,11 +22,10 @@ public class MovieDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Optional<List<Movie>> getAll() {
+    public Optional<List<Movie>> getAllMovieDto() { //TODO
         List<Movie> movies = jdbcTemplate.query(
-                "SELECT movie_id, title_russian_movie, title_native_movie, year, country" +
-                        ", genre_id, description, rating, price, poster_link FROM movie" +
-                        "JOIN poster ON movie.movie_id = poster.poster_id"
+                "SELECT movie_id, title_russian, title_native, year" +
+                        ", rating, price, poster_link FROM movie"
                 ,  new MovieRowMapper());
         logger.info("Selected list of movies: {}", movies);
         return Optional.of(movies);
@@ -34,13 +33,11 @@ public class MovieDao {
 
     public void addMovie(Movie movie) {
         jdbcTemplate.update("INSERT INTO movie (title_russian_movie, title_native_movie, year, country" +
-                        ", genre_id, description, rating, price) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                        ", genre, description, rating, price, poster_link) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 movie.getTitleRussianMovie(), movie.getTitleNativeMovie(), movie.getYearOfRelease()
-                , movie.getCountry(), movie.getGenre(), movie.getDescription(), movie.getRating()
-                , movie.getPrice());
-        jdbcTemplate.update("INSERT INTO poster (movie_id, poster_link) VALUES (?, ?)", movie.getId()
-                , movie.getPosterLink());
+                , movie.getCountry(), movie.getGenre().toString(), movie.getDescription(), movie.getRating()
+                , movie.getPrice(), movie.getPosterLink());
         logger.info("The movie {} created.", movie);
     }
 }

@@ -16,7 +16,7 @@ create table movie (
                        description VARCHAR (1024),
                        rating NUMERIC(3, 1),
                        price NUMERIC(6, 2),
-                       poster_id INTEGER REFERENCES  poster(poster_id)
+                       poster_link VARCHAR (1024)
 );
 
 create table review (
@@ -24,10 +24,4 @@ create table review (
                         user_id INTEGER REFERENCES users(user_id),
                         movie_id INTEGER REFERENCES movie(movie_id),
                         review VARCHAR (1024) UNIQUE NOT NULL
-);
-
-create table poster (
-                        poster_id SERIAL primary key,
-                        movie_id INTEGER REFERENCES movie(movie_id),
-                        poster_link VARCHAR (1024)
 );
