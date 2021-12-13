@@ -5,20 +5,18 @@ create table users (
                        alias VARCHAR (250) UNIQUE NOT NULL
 );
 
-create table genre (
-                       genre_id SERIAL primary key,
-                       title_genre VARCHAR (100) UNIQUE NOT NULL
-);
 
 create table movie (
                        movie_id SERIAL primary key,
-                       title_movie VARCHAR (350) UNIQUE NOT NULL,
+                       title_russian_movie VARCHAR (350) UNIQUE NOT NULL,
+                       title_native_movie VARCHAR (350) UNIQUE NOT NULL,
                        year INTEGER,
                        country VARCHAR (250),
-                       genre_id INTEGER REFERENCES genre(genre_id),
+                       genre_id VARCHAR (250),
                        description VARCHAR (1024),
                        rating NUMERIC(3, 1),
-                       price NUMERIC(6, 2)
+                       price NUMERIC(6, 2),
+                       poster_link VARCHAR (1024)
 );
 
 create table review (
@@ -26,10 +24,4 @@ create table review (
                         user_id INTEGER REFERENCES users(user_id),
                         movie_id INTEGER REFERENCES movie(movie_id),
                         review VARCHAR (1024) UNIQUE NOT NULL
-);
-
-create table poster (
-                        poster_id SERIAL primary key,
-                        movie_id INTEGER REFERENCES movie(movie_id),
-                        poster_link VARCHAR (1024)
 );
