@@ -16,7 +16,7 @@ import java.util.Optional;
 public class MovieService {
     private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
     private final MovieDao movieDao;
-    private MovieMapper movieMapper;
+    private final MovieMapper movieMapper;
 
     public MovieService(MovieDao movieDao, MovieMapper movieMapper) {
         this.movieDao = movieDao;
@@ -24,19 +24,30 @@ public class MovieService {
     }
 
     public List<MovieDto> getAll() {
-        Optional<List<Movie>> optionalMovies = movieDao.getAllMovieDto();
-        List<MovieDto> movieDtos = new ArrayList<>();
-        if (optionalMovies.isPresent()) {
-            List<Movie> movies = optionalMovies.get();
-            for (Movie movie : movies) {
-                movieDtos.add(movieMapper.toDto(movie));
-            }
-        }
-        logger.info("Delivered Movies: {}", movieDtos);
-        return movieDtos;
+        List<MovieDto> moviesDto = transformMovieToDto();
+        logger.info("Delivered all movies: {}", moviesDto);
+        return moviesDto;
     }
 
     public void addMovie(Movie movie) {
         movieDao.addMovie(movie);
+    }
+
+    public List<MovieDto> getRandom() {
+        List<MovieDto> moviesDto = transformMovieToDto();
+        logger.info("Delivered 3 random movies: {}", moviesDto);
+        return moviesDto;
+    }
+
+    private List<MovieDto> transformMovieToDto() {
+        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie();
+        List<MovieDto> moviesDto = new ArrayList<>();
+        if (optionalMovies.isPresent()) {
+            List<Movie> movies = optionalMovies.get();
+            for (Movie movie : movies) {
+                moviesDto.add(movieMapper.toDto(movie));
+            }
+        }
+        return moviesDto;
     }
 }
