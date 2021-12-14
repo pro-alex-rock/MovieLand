@@ -22,10 +22,7 @@ import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { SpringConfig.class, RootConfig.class })
-@WebAppConfiguration
-@DBRider
+
 class MovieControllerITest extends IntegrationTestBase {
 
     @Autowired
