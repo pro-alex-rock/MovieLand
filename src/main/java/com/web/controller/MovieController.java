@@ -31,7 +31,7 @@ public class MovieController {
 
     @GetMapping(path = "/random")
     @ResponseBody
-    public List<MovieDto> getRandom() { //TODO
+    public List<MovieDto> getRandom() {
         logger.info("Came request to get random three movies.");
         return movieService.getRandom();
     }
