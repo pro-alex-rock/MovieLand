@@ -46,22 +46,21 @@ public class MovieDao {
         return Optional.of(movies);
     }
 
-    public void addMovie(Movie movie) {
-        jdbcTemplate.update("INSERT INTO movie (title_russian, title_native, year, country" +
-                        ", genre, description, rating, price, poster_link) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                movie.getTitleRussian(), movie.getTitleNative(), movie.getYearOfRelease()
-                , movie.getCountry(), movie.getGenre(), movie.getDescription(), movie.getRating()
-                , movie.getPrice(), movie.getPosterLink());
-        logger.info("The movie {} created.", movie);
-    }
-
     public Optional<List<GenreDto>> getAllGenres() {
         List<GenreDto> genresDto = jdbcTemplate.query(
                 "SELECT movie_id, genre FROM movie"
                 ,  new GenreRowMapper());
         logger.info("Selected list of genres: {}", genresDto);
         return Optional.of(genresDto);
+    }
+
+    public Optional<List<Movie>> getMoviesByGenre(String genre) {
+        List<Movie> movies = jdbcTemplate.query(
+                "SELECT movie_id, title_russian, title_native, year" +
+                        ", rating, price, poster_link FROM movie WHERE genre = " + genre,
+                new CustomMovieMapper());
+        logger.info("Selected list of movies by genre: {}", movies);
+        return Optional.of(movies);
     }
 
     private static class CustomMovieMapper implements RowMapper<Movie> {

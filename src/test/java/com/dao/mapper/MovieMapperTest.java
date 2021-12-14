@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ContextConfiguration(classes = { SpringConfig.class, RootConfig.class })
-class AppMapperImplTest {
+class MovieMapperTest {
 
     private MovieMapper movieMapper = new MovieMapper(new ModelMapper());
 
@@ -44,7 +44,7 @@ class AppMapperImplTest {
     public void shouldCallMethodOneTime() {
         Movie movie = new Movie();
         MovieDto movieDto = movieMapper.toDto(movie);
-        AppMapper movieMapper = mock(AppMapper.class);
+        MovieMapper movieMapper = mock(MovieMapper.class);
         movieMapper.toEntity(movieDto);
         verify(movieMapper, times(1));
     }

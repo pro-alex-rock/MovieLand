@@ -52,7 +52,6 @@ public class MovieService {
 
     public List<GenreDto> getAllGenres() {
         Optional<List<GenreDto>> optionalGenres = movieDao.getAllGenres();
-
         if (optionalGenres.isPresent()) {
             List<GenreDto> genresDto = optionalGenres.get();
             logger.info("Delivered all genres: {}", genresDto);
@@ -60,5 +59,18 @@ public class MovieService {
         }
         logger.info("There no any genre.");
         return List.of();
+    }
+
+    public List<MovieDto> getMoviesByGenre(String genre) {
+        Optional<List<Movie>> optionalMovies = movieDao.getMoviesByGenre(genre);
+        List<MovieDto> moviesDto = new ArrayList<>();
+        if (optionalMovies.isPresent()) {
+            List<Movie> movies = optionalMovies.get();
+            for (Movie movie : movies) {
+                moviesDto.add(movieMapper.toDto(movie));
+            }
+        }
+        logger.info("Delivered movies by genre: {}", moviesDto);
+        return moviesDto;
     }
 }
