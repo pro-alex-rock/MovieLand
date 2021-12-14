@@ -1,12 +1,7 @@
 package com.dto;
 
-import lombok.Data;
-import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
-@Data
-@Component
 public class MovieDto {
     private int id;
     private String titleRussian;
@@ -14,7 +9,7 @@ public class MovieDto {
     private int yearOfRelease;
     private double rating;
     private BigDecimal price;
-    private String picturePath;
+    private String posterLink;
 
     public int getId() {
         return id;
@@ -64,11 +59,11 @@ public class MovieDto {
         this.price = price;
     }
 
-    public String getPicturePath() {
-        return picturePath;
+    public String getPosterLink() {
+        return posterLink;
     }
 
-    public void setPicturePath(String picturePath) {
-        this.picturePath = picturePath;
+    public void setPosterLink(String posterLink) {
+        this.posterLink = posterLink;
     }
 }

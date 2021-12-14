@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping(path = {"/", "/api/v1/movie"}, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MovieController {
     private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
-    private MovieService movieService;
+    private final MovieService movieService;
 
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
@@ -25,12 +25,14 @@ public class MovieController {
     @GetMapping
     @ResponseBody
     public List<MovieDto> getAll() {
+        logger.info("Came request to get all movies.");
         return movieService.getAll();
     }
 
     @GetMapping(path = "/random")
     @ResponseBody
     public List<MovieDto> getRandom() { //TODO
-        return movieService.getAll();
+        logger.info("Came request to get random three movies.");
+        return movieService.getRandom();
     }
 }

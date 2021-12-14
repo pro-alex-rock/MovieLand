@@ -1,0 +1,26 @@
+{
+  "movie": [
+    {
+      "title_russian": "Матрица",
+      "title_native": "Matrix",
+      "year": 1999,
+      "country": "США",
+      "genre": "фантастика",
+      "description": "Мир Матрицы — это иллюзия, существующая только в бесконечном сне обреченного человечества. Холодный мир будущего, в котором люди — всего лишь батарейки в компьютерных системах.",
+      "rating": 10.0,
+      "price": 100.00,
+      "poster_link": "https://upload.wikimedia.org/wikipedia/ru/thumb/9/9d/Matrix-DVD.jpg/217px-Matrix-DVD.jpg"
+    },
+    {
+      "title_russian": "Матрица-2",
+      "title_native": "Matrix-2",
+      "year": 2000,
+      "country": "США",
+      "genre": "фантастика",
+      "description": "Борцы за свободу Нео, Тринити и Морфеус продолжают руководить восстанием людей против Армии Машин. Для уничтожения системы репрессий и эксплуатации они вынуждены прибегнуть не только к арсеналу превосходного оружия, но и к своим выдающимся навыкам.",
+      "rating": 10.0,
+      "price": 100.00,
+      "poster_link": "https://upload.wikimedia.org/wikipedia/ru/6/62/Matrix_reloaded.jpg"
+    }
+  ]
+}
