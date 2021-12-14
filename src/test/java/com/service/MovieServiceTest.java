@@ -8,7 +8,6 @@ import com.model.Movie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -36,8 +35,8 @@ class MovieServiceTest {
     @Test
     public void shouldTransformMovieToDto() {
         Movie movie = new Movie();
-        movie.setTitleRussianMovie("Название");
-        movie.setTitleNativeMovie("Title");
+        movie.setTitleRussian("Название");
+        movie.setTitleNative("Title");
         movie.setYearOfRelease(2000);
         movie.setCountry("Country");
         movie.setGenre("action");

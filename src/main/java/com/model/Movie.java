@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 @Component
 public class Movie {
     private int id;
-    private String titleRussianMovie;
-    private String titleNativeMovie;
+    private String titleRussian;
+    private String titleNative;
     private int yearOfRelease;
     private String country;
     private String genre;
@@ -19,12 +19,12 @@ public class Movie {
     private BigDecimal price;
     private String posterLink;
 
-    public String getTitleRussianMovie() {
-        return titleRussianMovie;
+    public String getTitleRussian() {
+        return titleRussian;
     }
 
-    public void setTitleRussianMovie(String titleRussianMovie) {
-        this.titleRussianMovie = titleRussianMovie;
+    public void setTitleRussian(String titleRussian) {
+        this.titleRussian = titleRussian;
     }
 
     public int getId() {
@@ -35,12 +35,12 @@ public class Movie {
         this.id = id;
     }
 
-    public String getTitleNativeMovie() {
-        return titleNativeMovie;
+    public String getTitleNative() {
+        return titleNative;
     }
 
-    public void setTitleNativeMovie(String titleNativeMovie) {
-        this.titleNativeMovie = titleNativeMovie;
+    public void setTitleNative(String titleNative) {
+        this.titleNative = titleNative;
     }
 
     public int getYearOfRelease() {

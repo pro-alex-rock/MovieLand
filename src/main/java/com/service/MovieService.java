@@ -24,7 +24,14 @@ public class MovieService {
     }
 
     public List<MovieDto> getAll() {
-        List<MovieDto> moviesDto = transformMovieToDto();
+        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie();
+        List<MovieDto> moviesDto = new ArrayList<>();
+        if (optionalMovies.isPresent()) {
+            List<Movie> movies = optionalMovies.get();
+            for (Movie movie : movies) {
+                moviesDto.add(movieMapper.toDto(movie));
+            }
+        }
         logger.info("Delivered all movies: {}", moviesDto);
         return moviesDto;
     }
@@ -34,13 +41,7 @@ public class MovieService {
     }
 
     public List<MovieDto> getRandom() {
-        List<MovieDto> moviesDto = transformMovieToDto();
-        logger.info("Delivered 3 random movies: {}", moviesDto);
-        return moviesDto;
-    }
-
-    private List<MovieDto> transformMovieToDto() {
-        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie();
+        Optional<List<Movie>> optionalMovies = movieDao.getRandom();
         List<MovieDto> moviesDto = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
@@ -48,6 +49,7 @@ public class MovieService {
                 moviesDto.add(movieMapper.toDto(movie));
             }
         }
+        logger.info("Delivered 3 random movies: {}", moviesDto);
         return moviesDto;
     }
 }

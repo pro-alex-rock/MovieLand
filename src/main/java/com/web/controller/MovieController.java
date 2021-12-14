@@ -25,12 +25,14 @@ public class MovieController {
     @GetMapping
     @ResponseBody
     public List<MovieDto> getAll() {
+        logger.info("Came request to get all movies.");
         return movieService.getAll();
     }
 
     @GetMapping(path = "/random")
     @ResponseBody
     public List<MovieDto> getRandom() { //TODO
+        logger.info("Came request to get random three movies.");
         return movieService.getRandom();
     }
 }
