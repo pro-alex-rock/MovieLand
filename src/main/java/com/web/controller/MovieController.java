@@ -20,9 +20,12 @@ public class MovieController {
     }
 
     @GetMapping
-    public List<MovieDto> getAll() {
-        logger.info("Came request to get all movies.");
-        return movieService.getAll();
+    public List<MovieDto> getAll(@RequestParam(value = "rating", required = false) String rating
+            , @RequestParam(value = "price ", required = false) String price) {
+        String columnName = (rating != null ? "rating" : (price != null ? "price" : "nameRussian"));
+        String sortingType = (rating != null ? rating : (price != null ? price : "asc"));
+        logger.info("Came request to get all movies. Column for sorting - {},  sorting type - {}", columnName, sortingType);
+        return movieService.getAll(columnName, sortingType);
     }
 
     @GetMapping(path = "/random")
@@ -31,9 +34,13 @@ public class MovieController {
         return movieService.getRandom();
     }
 
-    @GetMapping(path = "/genre/{genreId}")
-    public List<MovieDto> getMoviesByGenre(@PathVariable("genreId") String genreId) {
-        logger.info("Came request to get movies by genre '{}'", genreId);
-        return movieService.getMoviesByGenre(genreId);
+    @GetMapping(path = "/genre/{genreId}/")
+    public List<MovieDto> getMoviesByGenre(@PathVariable("genreId") String genreId
+            , @RequestParam(value = "rating", required = false) String rating
+            , @RequestParam(value = "price ", required = false) String price) {
+        String columnName = (rating != null ? "rating" : (price != null ? "price" : "nameRussian"));
+        String sortingType = (rating != null ? rating : (price != null ? price : "asc"));
+        logger.info("Came request to get movies by genre '{}'. Column for sorting - {},  sorting type - {}", columnName, sortingType, genreId);
+        return movieService.getMoviesByGenre(genreId, columnName, sortingType);
     }
 }

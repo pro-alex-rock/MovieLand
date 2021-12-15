@@ -27,12 +27,12 @@ public class MovieDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Optional<List<Movie>> getAllMovie() {
+    public Optional<List<Movie>> getAllMovie(String columnName, String sortingType) {
         List<Movie> movies = jdbcTemplate.query(
                 "SELECT movie_id, title_russian, title_native, year" +
-                        ", rating, price, poster_link FROM movie"
+                        ", rating, price, poster_link FROM movie ORDER BY " + columnName + " " + sortingType
                 ,  new CustomMovieMapper());
-        logger.info("Selected list of movies: {}", movies);
+        logger.info("Selected list of movies: {}. Column for sorting - {},  sorting type - {}", movies, columnName, sortingType);
         return Optional.of(movies);
     }
 
@@ -55,12 +55,12 @@ public class MovieDao {
     }
 
 
-    public Optional<List<Movie>> getMoviesByGenre(String genre) {
+    public Optional<List<Movie>> getMoviesByGenre(String genre, String columnName, String sortingType) {
         List<Movie> movies = jdbcTemplate.query(
                 "SELECT movie_id, title_russian, title_native, year" +
-                        ", rating, price, poster_link FROM movie WHERE genre = " + genre,
+                        ", rating, price, poster_link FROM movie WHERE genre = " + genre + " ORDER BY " + columnName + " " + sortingType,
                 new CustomMovieMapper());
-        logger.info("Selected list of movies by genre: {}", movies);
+        logger.info("Selected list of movies {} by genre: {}. Column for sorting - {},  sorting type - {}", movies, genre, columnName, sortingType);
         return Optional.of(movies);
     }
 

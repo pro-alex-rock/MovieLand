@@ -23,8 +23,8 @@ public class MovieService {
         this.movieMapper = movieMapper;
     }
 
-    public List<MovieDto> getAll() {
-        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie();
+    public List<MovieDto> getAll(String columnName, String sortingType) {
+        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie(columnName, sortingType);
         List<MovieDto> moviesDto = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
@@ -32,7 +32,7 @@ public class MovieService {
                 moviesDto.add(movieMapper.toDto(movie));
             }
         }
-        logger.info("Delivered all movies: {}", moviesDto);
+        logger.info("Delivered all movies: {}. Column for sorting - {},  sorting type - {}", moviesDto, columnName, sortingType);
         return moviesDto;
     }
 
@@ -49,8 +49,8 @@ public class MovieService {
         return moviesDto;
     }
 
-    public List<MovieDto> getMoviesByGenre(String genre) {
-        Optional<List<Movie>> optionalMovies = movieDao.getMoviesByGenre(genre);
+    public List<MovieDto> getMoviesByGenre(String genre, String columnName, String sortingType) {
+        Optional<List<Movie>> optionalMovies = movieDao.getMoviesByGenre(genre, columnName, sortingType);
         List<MovieDto> moviesDto = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
@@ -58,7 +58,7 @@ public class MovieService {
                 moviesDto.add(movieMapper.toDto(movie));
             }
         }
-        logger.info("Delivered movies by genre: {}", moviesDto);
+        logger.info("Delivered movies {} by genre: {}. Column for sorting - {},  sorting type - {}", moviesDto,  genre, columnName, sortingType);
         return moviesDto;
     }
 }
