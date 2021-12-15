@@ -2,7 +2,6 @@ package com.service;
 
 import com.dao.MovieDao;
 import com.dao.mapper.MovieMapper;
-import com.dto.GenreDto;
 import com.dto.MovieDto;
 import com.model.Movie;
 import org.slf4j.Logger;
@@ -48,17 +47,6 @@ public class MovieService {
         }
         logger.info("Delivered 3 random movies: {}", moviesDto);
         return moviesDto;
-    }
-
-    public List<GenreDto> getAllGenres() {
-        Optional<List<GenreDto>> optionalGenres = movieDao.getAllGenres();
-        if (optionalGenres.isPresent()) {
-            List<GenreDto> genresDto = optionalGenres.get();
-            logger.info("Delivered all genres: {}", genresDto);
-            return genresDto;
-        }
-        logger.info("There no any genre.");
-        return List.of();
     }
 
     public List<MovieDto> getMoviesByGenre(String genre) {

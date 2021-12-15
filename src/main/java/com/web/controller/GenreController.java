@@ -2,7 +2,7 @@ package com.web.controller;
 
 
 import com.dto.GenreDto;
-import com.service.MovieService;
+import com.service.GenreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -17,15 +17,15 @@ import java.util.List;
 public class GenreController {
 
     private static final Logger logger = LoggerFactory.getLogger(GenreController.class);
-    private final MovieService movieService;
+    private final GenreService genreService;
 
-    public GenreController(MovieService movieService) {
-        this.movieService = movieService;
+    public GenreController(GenreService genreService) {
+        this.genreService = genreService;
     }
 
     @GetMapping()
     public List<GenreDto> getAllGenres() {
         logger.info("Came request to get all genres.");
-        return movieService.getAllGenres();
+        return genreService.getAllGenres();
     }
 }
