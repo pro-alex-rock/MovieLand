@@ -55,7 +55,7 @@ class MovieControllerITest extends IntegrationTestBase {
     }
 
     @Test
-    public void givenURIWhenMockMVCThenResponseContainsKeyWords() throws Exception {
+    public void givenURIWhenGetAllMoviesThenResponseContainsKeyWords() throws Exception {
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie")).andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
@@ -75,5 +75,90 @@ class MovieControllerITest extends IntegrationTestBase {
                 .andExpect(jsonPath("$.picturePath")
                         .value("https://upload.wikimedia.org/wikipedia/ru/thumb/9/9d/Matrix-DVD.jpg/217px-Matrix-DVD.jpg"));
     }
+
+    @Test
+    void givenURIWhenSortByRatingDescThenResponseOk() throws Exception {
+        String sortingType = "desc";
+        mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?rating={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void givenURIWhenSortByRatingAscThenResponseOk() throws Exception {
+        String sortingType = "asc";
+        mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?rating={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void givenURIWhenSortByRatingDescThenJsonNotNull() throws Exception {
+        String sortingType = "desc";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?rating={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+        String content = mvcResult.getResponse().getContentAsString();
+        assertTrue(content.length() > 0);
+        assertEquals("Матрица 2", contains(content));
+    }
+
+    @Test
+    void givenURIWhenSortByRatingAscThenJsonNotNull() throws Exception {
+        String sortingType = "asc";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?rating={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+        String content = mvcResult.getResponse().getContentAsString();
+        assertTrue(content.length() > 0);
+        assertEquals("Матрица 2", contains(content));
+    }
+
+    @Test
+    void givenURIWhenSortByPriceDescThenResponseOk() throws Exception {
+        String sortingType = "desc";
+        mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?price={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void givenURIWhenSortByPriceAscThenResponseOk() throws Exception {
+        String sortingType = "asc";
+        mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?price={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    void givenURIWhenSortByPriceDescThenJsonNotNull() throws Exception {
+        String sortingType = "desc";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?price={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+        String content = mvcResult.getResponse().getContentAsString();
+        assertTrue(content.length() > 0);
+        assertEquals("Матрица 2", contains(content));
+    }
+
+    @Test
+    void givenURIWhenSortByPriceAscThenJsonNotNull() throws Exception {
+        String sortingType = "asc";
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/app/v1/movie?price={rating}", sortingType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+        String content = mvcResult.getResponse().getContentAsString();
+        assertTrue(content.length() > 0);
+        assertEquals("Матрица 2", contains(content));
+    }
+
 
 }
