@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 
 public class MovieDto {
     private int id;
-    private String titleRussian;
-    private String titleNative;
+    private String nameRussian;
+    private String nameNative;
     private int yearOfRelease;
     private double rating;
     private BigDecimal price;
-    private String posterLink;
+    private String picturePath;
 
     public int getId() {
         return id;
@@ -19,20 +19,20 @@ public class MovieDto {
         this.id = id;
     }
 
-    public String getTitleRussian() {
-        return titleRussian;
+    public String getNameRussian() {
+        return nameRussian;
     }
 
-    public void setTitleRussian(String titleRussian) {
-        this.titleRussian = titleRussian;
+    public void setNameRussian(String nameRussian) {
+        this.nameRussian = nameRussian;
     }
 
-    public String getTitleNative() {
-        return titleNative;
+    public String getNameNative() {
+        return nameNative;
     }
 
-    public void setTitleNative(String titleNative) {
-        this.titleNative = titleNative;
+    public void setNameNative(String nameNative) {
+        this.nameNative = nameNative;
     }
 
     public int getYearOfRelease() {
@@ -59,11 +59,11 @@ public class MovieDto {
         this.price = price;
     }
 
-    public String getPosterLink() {
-        return posterLink;
+    public String getPicturePath() {
+        return picturePath;
     }
 
-    public void setPosterLink(String posterLink) {
-        this.posterLink = posterLink;
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

@@ -35,19 +35,19 @@ class MovieServiceTest {
     @Test
     public void shouldTransformMovieToDto() {
         Movie movie = new Movie();
-        movie.setTitleRussian("Название");
-        movie.setTitleNative("Title");
+        movie.setNameRussian("Название");
+        movie.setNameNative("Title");
         movie.setYearOfRelease(2000);
         movie.setCountry("Country");
         movie.setGenre("action");
         movie.setDescription("Description");
         movie.setRating(8.0);
         movie.setPrice(new BigDecimal("10.00"));
-        movie.setPosterLink("Poster_link");
+        movie.setPicturePath("Poster_link");
 
         MovieDto expectedMovieDto = new MovieDto();
-        expectedMovieDto.setTitleRussian("Название");
-        expectedMovieDto.setTitleNative("Title");
+        expectedMovieDto.setNameRussian("Название");
+        expectedMovieDto.setNameNative("Title");
         expectedMovieDto.setYearOfRelease(2000);
         expectedMovieDto.setRating(8.0);
         expectedMovieDto.setPrice(new BigDecimal("10.00"));

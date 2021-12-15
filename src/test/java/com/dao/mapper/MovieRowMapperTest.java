@@ -22,8 +22,8 @@ class MovieRowMapperTest {
         Movie actualMovie = movieMapper.mapRow(resultSet, 0);
 
         assertEquals(actualMovie.getId(), 0);
-        assertEquals(actualMovie.getTitleRussian(), "Название");
-        assertEquals(actualMovie.getTitleNative(), "Title");
+        assertEquals(actualMovie.getNameRussian(), "Название");
+        assertEquals(actualMovie.getNameNative(), "Title");
         assertEquals(actualMovie.getYearOfRelease(), 2000);
     }
 

@@ -54,6 +54,7 @@ public class MovieDao {
         return Optional.of(genresDto);
     }
 
+
     public Optional<List<Movie>> getMoviesByGenre(String genre) {
         List<Movie> movies = jdbcTemplate.query(
                 "SELECT movie_id, title_russian, title_native, year" +
@@ -69,12 +70,12 @@ public class MovieDao {
         public Movie mapRow(ResultSet rs, int rowNum) throws SQLException {
             Movie movie = new Movie();
             movie.setId(rs.getInt("id"));
-            movie.setTitleRussian(rs.getString("title_russian"));
-            movie.setTitleNative(rs.getString("title_native"));
+            movie.setNameRussian(rs.getString("title_russian"));
+            movie.setNameNative(rs.getString("title_native"));
             movie.setYearOfRelease(rs.getInt("year"));
             movie.setRating(rs.getDouble("rating"));
             movie.setPrice(rs.getBigDecimal("price"));
-            movie.setPosterLink(rs.getString("poster_link"));
+            movie.setPicturePath(rs.getString("poster_link"));
             return movie;
         }
     }
