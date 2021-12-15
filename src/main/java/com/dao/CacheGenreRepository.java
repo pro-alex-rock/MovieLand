@@ -28,12 +28,10 @@ public class CacheGenreRepository {
 
     @Scheduled(fixedRate = 4 * 60 * 60 * 1000)
     private void fillCache() {
-        if (genreDtoList.isEmpty()) {
-            getAllGenres();
-        } else {
+        if (!genreDtoList.isEmpty()) {
             genreDtoList.clear();
-            getAllGenres();
         }
+        getAllGenres();
     }
 
     private List<GenreDto> getAllGenres() {
