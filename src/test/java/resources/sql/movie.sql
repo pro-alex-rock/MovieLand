@@ -1,3 +1,39 @@
+create table genre (
+                       id SERIAL,
+                       genre VARCHAR (64) primary key NOT NULL
+);
+
+create table movie (
+                       movie_id SERIAL primary key,
+                       title_russian VARCHAR (350) UNIQUE NOT NULL,
+                       title_native VARCHAR (350) UNIQUE NOT NULL,
+                       year INTEGER,
+                       country VARCHAR (250),
+                       genre VARCHAR REFERENCES genre(genre),
+                       description VARCHAR (1024),
+                       rating NUMERIC(3, 1),
+                       price NUMERIC(6, 2),
+                       poster_link VARCHAR (1024)
+);
+
+INSERT INTO genre (genre) VALUES
+('драма'),
+('криминал'),
+('фэнтези'),
+('детектив'),
+('мелодрама'),
+('биография'),
+('комедия'),
+('фантастика'),
+('боевик'),
+('триллер'),
+('приключения'),
+('аниме'),
+('мультфильм'),
+('семейный'),
+('вестерн');
+
+
 INSERT INTO movie (title_russian, title_native, year, country, genre, description, rating, price, poster_link)
 VALUES ('Матрица', 'Matrix', 1999, 'США', 'фантастика',
         'Мир Матрицы — это иллюзия, существующая только в бесконечном сне обреченного человечества. Холодный мир будущего, в котором люди — всего лишь батарейки в компьютерных системах.',

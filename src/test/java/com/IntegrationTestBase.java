@@ -11,12 +11,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-@Sql("/resources/sql/data.sql")
+@Sql("/resources/sql/movie.sql")
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { SpringConfig.class, RootConfig.class }, initializers = {Postgres.Initializer.class})
-@WebAppConfiguration
+@WebAppConfiguration(value = "src/main/com")
 @Transactional
-public class IntegrationTestBase {
+public abstract class IntegrationTestBase {
 
     @BeforeAll
     public static void setUp() {

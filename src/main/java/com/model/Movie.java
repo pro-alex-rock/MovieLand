@@ -9,22 +9,22 @@ import java.math.BigDecimal;
 @Component
 public class Movie {
     private int id;
-    private String titleRussian;
-    private String titleNative;
+    private String nameRussian;
+    private String nameNative;
     private int yearOfRelease;
     private String country;
     private String genre;
     private String description;
     private double rating;
     private BigDecimal price;
-    private String posterLink;
+    private String picturePath;
 
-    public String getTitleRussian() {
-        return titleRussian;
+    public String getNameRussian() {
+        return nameRussian;
     }
 
-    public void setTitleRussian(String titleRussian) {
-        this.titleRussian = titleRussian;
+    public void setNameRussian(String nameRussian) {
+        this.nameRussian = nameRussian;
     }
 
     public int getId() {
@@ -35,12 +35,12 @@ public class Movie {
         this.id = id;
     }
 
-    public String getTitleNative() {
-        return titleNative;
+    public String getNameNative() {
+        return nameNative;
     }
 
-    public void setTitleNative(String titleNative) {
-        this.titleNative = titleNative;
+    public void setNameNative(String nameNative) {
+        this.nameNative = nameNative;
     }
 
     public int getYearOfRelease() {
@@ -91,11 +91,11 @@ public class Movie {
         this.price = price;
     }
 
-    public String getPosterLink() {
-        return posterLink;
+    public String getPicturePath() {
+        return picturePath;
     }
 
-    public void setPosterLink(String posterLink) {
-        this.posterLink = posterLink;
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

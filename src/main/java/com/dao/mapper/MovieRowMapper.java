@@ -12,15 +12,15 @@ public class MovieRowMapper implements RowMapper<Movie> {
 
         Movie movie = new Movie();
         movie.setId(resultSet.getInt("movie_id"));
-        movie.setTitleRussian(resultSet.getString("title_russian"));
-        movie.setTitleNative(resultSet.getString("title_native"));
+        movie.setNameRussian(resultSet.getString("title_russian"));
+        movie.setNameNative(resultSet.getString("title_native"));
         movie.setYearOfRelease(resultSet.getInt("year"));
         movie.setCountry(resultSet.getString("country"));
         movie.setGenre(resultSet.getString("genre"));
         movie.setDescription(resultSet.getString("description"));
         movie.setRating(resultSet.getDouble("rating"));
         movie.setPrice(resultSet.getBigDecimal("price"));
-        movie.setPosterLink(resultSet.getString("poster_link"));
+        movie.setPicturePath(resultSet.getString("poster_link"));
         return movie;
     }
 }
