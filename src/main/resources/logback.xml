@@ -1,14 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration debug = "false"  scanPeriod="60 seconds">
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
-    </appender>
+<configuration>
+<appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>log/movieland.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <FileNamePattern>movieland-%d{yyyy-MM-dd}.log.%i</FileNamePattern>
+        <maxFileSize>5mb</maxFileSize>
+    </rollingPolicy>
+    <encoder>
+        <Pattern>%mdc %d{HH:mm:ss} %-5level [%thread] %logger{35} - %msg %n</Pattern>
+    </encoder>
+</appender>
 
-    <logger name="logs" level="INFO"/>
+<appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+        <Pattern>%mdc %d{HH:mm:ss} %-5level [%thread] %logger{35} - %msg %n</Pattern>
+    </encoder>
+</appender>
 
-    <root level="INFO">
-        <appender-ref ref="STDOUT" />
-    </root>
+
+<root level="DEBUG">
+    <appender-ref ref="fileAppender" />
+    <appender-ref ref="consoleAppender" />
+</root>
 </configuration>
