@@ -21,7 +21,7 @@ public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationCon
 
     @Override
     protected String[] getServletMappings() {
-        return new String[0];
+        return new String[]{"/api/v1/*"};
     }
 
     @Override

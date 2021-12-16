@@ -1,8 +1,6 @@
 package com.dao;
 
-import com.dao.mapper.GenreRowMapper;
 import com.dao.mapper.MovieRowMapper;
-import com.dto.GenreDto;
 import com.model.Movie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,14 +42,6 @@ public class MovieDao {
                 ,  new MovieRowMapper());
         logger.info("Selected 3 random movies: {}", movies);
         return Optional.of(movies);
-    }
-
-    public Optional<List<GenreDto>> getAllGenres() {
-        List<GenreDto> genresDto = jdbcTemplate.query(
-                "SELECT movie_id, genre FROM movie"
-                ,  new GenreRowMapper());
-        logger.info("Selected list of genres: {}", genresDto);
-        return Optional.of(genresDto);
     }
 
 

@@ -7,23 +7,27 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
-@EnableScheduling
 public class CacheGenreRepository {
     private static final Logger logger = LoggerFactory.getLogger(CacheGenreRepository.class);
-    private final MovieDao movieDao;
-    List<GenreDto> genreDtoList;
+    private final GenreDao genreDao;
+    private volatile List<GenreDto> genreDtoList;
 
-    public CacheGenreRepository(MovieDao movieDao) {
-        this.movieDao = movieDao;
+    public CacheGenreRepository(GenreDao genreDao) {
+        this.genreDao = genreDao;
         genreDtoList = getAllGenres();
     }
 
-    public List<GenreDto> cacheGenre() {
-        return genreDtoList;
+    public List<GenreDto> getCacheGenre() {
+        List<GenreDto> newListGenreDto = new ArrayList<>();
+        newListGenreDto.addAll(genreDtoList);
+        logger.info("Sent all genres: {} from cache to GenreService", newListGenreDto);
+        return newListGenreDto;
     }
 
     @Scheduled(fixedRate = 4 * 60 * 60 * 1000)
@@ -31,11 +35,11 @@ public class CacheGenreRepository {
         if (!genreDtoList.isEmpty()) {
             genreDtoList.clear();
         }
-        getAllGenres();
+        genreDtoList = getAllGenres();
     }
 
     private List<GenreDto> getAllGenres() {
-        Optional<List<GenreDto>> optionalGenres = movieDao.getAllGenres();
+        Optional<List<GenreDto>> optionalGenres = genreDao.getAllGenres();
         if (optionalGenres.isPresent()) {
             List<GenreDto> genresDbDto = optionalGenres.get();
             logger.info("Selected all genres: {} from db to Cache", genresDbDto);
