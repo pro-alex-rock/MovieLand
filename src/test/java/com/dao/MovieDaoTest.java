@@ -1,15 +1,17 @@
 package com.dao;
 
 import com.IntegrationTestBase;
-import com.dto.GenreDto;
 import com.model.Movie;
+import com.model.SortingCredentials;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -18,10 +20,11 @@ class MovieDaoTest extends IntegrationTestBase {
 
     @Autowired
     private MovieDao movieDao;
+    private final SortingCredentials sortingCredentials = new SortingCredentials();
 
     @Test
     public void shouldGetMovieFromDB() {
-        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie();
+        Optional<List<Movie>> optionalMovies = movieDao.getAllMovie(sortingCredentials);
         assertTrue(optionalMovies.isPresent());
         optionalMovies.ifPresent(entity -> {
             assertEquals("Матрица", entity.get(0).getNameRussian());
@@ -31,7 +34,7 @@ class MovieDaoTest extends IntegrationTestBase {
             assertEquals("фантастика", entity.get(0).getGenre());
             assertEquals("Мир Матрицы — это иллюзия", contains(entity.get(0).getDescription()));
             assertEquals(10.0, entity.get(0).getRating());
-            assertEquals(100.00, entity.get(0).getPrice());
+            assertEquals(new BigDecimal("100.00"), entity.get(0).getPrice());
             assertEquals("Matrix_reloaded.jpg", contains(entity.get(0).getPicturePath()));
         });
     }
@@ -39,7 +42,7 @@ class MovieDaoTest extends IntegrationTestBase {
     @Test
     public void shouldCallGetAllMovieTime() {
         verify(movieDao, times(0));
-        movieDao.getAllMovie();
+        movieDao.getAllMovie(sortingCredentials);
         verify(movieDao, times(1));
     }
 
@@ -53,28 +56,9 @@ class MovieDaoTest extends IntegrationTestBase {
 
     @Test
     public void shouldGetAllMoviesByGenre() {
-        Optional<List<Movie>> optionalMovies = movieDao.getMoviesByGenre("фантастика");
+        Optional<List<Movie>> optionalMovies = movieDao.getMoviesByGenre("фантастика", sortingCredentials);
         assertTrue(optionalMovies.isPresent());
         assertTrue(optionalMovies.get().size() > 0);
         assertEquals(optionalMovies.get().size(), 2);
-    }
-
-    @Test
-    public void shouldGetAllGenresFromDB() {
-        Optional<List<GenreDto>> optionalGenres = movieDao.getAllGenres();
-        assertTrue(optionalGenres.isPresent());
-        optionalGenres.ifPresent(entity -> {
-            assertEquals("фантастика", entity.get(0).getName());
-            assertEquals("драма", entity.get(2).getName());
-        });
-        assertTrue(optionalGenres.get().size() > 0);
-        assertEquals(optionalGenres.get().size(), 4);
-    }
-
-    @Test
-    public void shouldCallGetAllGenresOneTime() {
-        verify(movieDao, times(0));
-        movieDao.getAllGenres();
-        verify(movieDao, times(1));
     }
 }

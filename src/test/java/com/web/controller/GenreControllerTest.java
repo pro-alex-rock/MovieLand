@@ -31,14 +31,6 @@ class GenreControllerTest extends IntegrationTestBase {
     }
 
     @Test
-    public void givenWebAppContextThenItProvidesMovieController() {
-        ServletContext servletContext = webApplicationContext.getServletContext();
-        assertNotNull(servletContext);
-        assertTrue(servletContext instanceof MockServletContext);
-        assertNotNull(webApplicationContext.getBean("genreController"));
-    }
-
-    @Test
     public void givenURIWhenMockMVCThenReturnsStatusIsOk() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/v1/genre")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
