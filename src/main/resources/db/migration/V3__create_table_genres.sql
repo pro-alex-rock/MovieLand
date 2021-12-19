@@ -1,6 +1,6 @@
-create table genre (
-                       id SERIAL,
-                       genre VARCHAR (64) primary key NOT NULL
+create table IF NOT EXISTS genre (
+                       genre_id SERIAL primary key NOT NULL,
+                       genre VARCHAR (64)
 );
 
 ALTER TABLE movie DROP COLUMN genre CASCADE;

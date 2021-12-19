@@ -1,7 +1,5 @@
 package com.dao.mapper;
 
-import com.configuration.RootConfig;
-import com.configuration.SpringConfig;
 import com.dao.mapper.modelMapper.DefaultMapper;
 import com.dto.MovieDto;
 import com.model.Movie;

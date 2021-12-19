@@ -23,7 +23,7 @@ public class GenreDao {
 
     public Optional<List<GenreDto>> getAllGenres() {
         List<GenreDto> genresDto = jdbcTemplate.query(
-                "SELECT movie_id, genre FROM movie"
+                "SELECT genre_id, genre FROM genre"
                 ,  genreRowMapper);
         logger.info("Selected list of genres: {}", genresDto);
         return Optional.of(genresDto);
