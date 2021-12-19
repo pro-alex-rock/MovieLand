@@ -1,15 +1,15 @@
 package com.dto;
 
 public class GenreDto {
-    private int id;
+    private int genre_id;
     private String name;
 
-    public int getId() {
-        return id;
+    public int getGenreId() {
+        return genre_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setGenreId(int genre_id) {
+        this.genre_id = genre_id;
     }
 
     public String getName() {
