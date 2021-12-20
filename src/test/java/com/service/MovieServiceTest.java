@@ -1,8 +1,8 @@
 package com.service;
 
-import com.dao.MovieDao;
+import com.repository.MovieDao;
 import com.dto.MovieDto;
-import com.model.Movie;
+import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

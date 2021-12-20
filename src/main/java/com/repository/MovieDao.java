@@ -1,8 +1,8 @@
-package com.dao;
+package com.repository;
 
-import com.dao.mapper.GeneralMovieRowMapper;
-import com.dao.mapper.ShortInfoMovieMapper;
-import com.model.Movie;
+import com.repository.mapper.GeneralMovieRowMapper;
+import com.repository.mapper.ShortInfoMovieMapper;
+import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

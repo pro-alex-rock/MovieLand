@@ -1,10 +1,11 @@
-package com.dao;
+package com.repository;
 
 import com.IntegrationTestBase;
-import com.model.Movie;
+import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,7 @@ import static org.mockito.ArgumentMatchers.contains;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+@SpringBootTest
 class MovieDaoTest extends IntegrationTestBase {
 
     @Autowired

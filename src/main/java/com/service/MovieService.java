@@ -1,9 +1,9 @@
 package com.service;
 
-import com.dao.MovieDao;
-import com.dao.mapper.modelMapper.DefaultMapper;
+import com.repository.MovieDao;
+import com.repository.mapper.modelMapper.MovieMapper;
 import com.dto.MovieDto;
-import com.model.Movie;
+import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +17,10 @@ import java.util.Optional;
 public class MovieService {
     private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
     private final MovieDao movieDao;
-    private final DefaultMapper movieMapper;
+    //private final MovieRepository movieRepository;
+    private final MovieMapper movieMapper;
 
-    public MovieService(MovieDao movieDao, DefaultMapper movieMapper) {
+    public MovieService(MovieDao movieDao, MovieMapper movieMapper) {
         this.movieDao = movieDao;
         this.movieMapper = movieMapper;
     }

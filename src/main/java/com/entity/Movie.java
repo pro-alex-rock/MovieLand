@@ -1,25 +1,43 @@
-package com.model;
+package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "movie")
 public class Movie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name_russian")
     private String nameRussian;
+    @Column(name = "name_native")
     private String nameNative;
+    @Column(name = "year")
     private int yearOfRelease;
+    @Column(name =" country")
     private String country;
+    @Column(name = "genre")
     private String genre;
+    @Column(name = "description")
     private String description;
+    @Column(name = "rating")
     private double rating;
+    @Column(name = "price")
     private BigDecimal price;
+    @Column(name = "picturePath")
     private String picturePath;
+
 
     public String getNameRussian() {
         return nameRussian;

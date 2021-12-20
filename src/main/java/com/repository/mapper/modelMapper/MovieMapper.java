@@ -1,12 +1,12 @@
-package com.dao.mapper.modelMapper;
+package com.repository.mapper.modelMapper;
 
 import com.dto.MovieDto;
-import com.model.Movie;
+import com.entity.Movie;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", injectionStrategy = InjectionStrategy.CONSTRUCTOR)
-public interface DefaultMapper {
+public interface MovieMapper {
     MovieDto toDto(Movie movie);
     Movie toEntity(MovieDto movieDto);
 }

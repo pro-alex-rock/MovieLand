@@ -1,6 +1,6 @@
-package com.dao.mapper;
+package com.repository.mapper;
 
-import com.model.Movie;
+import com.entity.Movie;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

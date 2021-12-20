@@ -1,21 +1,21 @@
-package com.dao.mapper;
+package com.repository.mapper;
 
-import com.dao.mapper.modelMapper.DefaultMapper;
+import com.repository.mapper.modelMapper.MovieMapper;
 import com.dto.MovieDto;
-import com.model.Movie;
+import com.entity.Movie;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@ContextConfiguration(classes = { SpringConfig.class, RootConfig.class })
-class DefaultMapperTest {
+@SpringBootTest
+class MovieMapperTest {
 
-    private DefaultMapper movieMapper = Mappers.getMapper(DefaultMapper.class);
+    private MovieMapper movieMapper = Mappers.getMapper(MovieMapper.class);
 
     @Test
     public void shouldGetMovieFromDB() {
@@ -54,7 +54,7 @@ class DefaultMapperTest {
     @Test
     public void shouldCallMethodOneTime() {
         Movie movie = new Movie();
-        movieMapper = mock(DefaultMapper.class);
+        movieMapper = mock(MovieMapper.class);
         movieMapper.toDto(movie);
         verify(movieMapper, times(1));
     }
