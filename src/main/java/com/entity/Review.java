@@ -1,9 +1,9 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -18,10 +18,17 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private  int reviewId;
+
     @Column(name = "user_id")
+    @JsonIgnore
     private  int userId;
+
     @Column(name = "movie_id")
-    private  int movieId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "movie_id", nullable = false)
+    @JsonIgnore
+    private Movie movieId;
+
     @Column(name = "review")
     private String review;
 }

@@ -21,12 +21,13 @@ create table movie (
                        name_russian VARCHAR (350) UNIQUE NOT NULL,
                        name_native VARCHAR (350) UNIQUE NOT NULL,
                        year INTEGER,
-                       country VARCHAR REFERENCES country(country),
-                       genre VARCHAR REFERENCES genre(genre),
+                       country VARCHAR REFERENCES country(country_id),
+                       genre VARCHAR REFERENCES genre(genre_id),
                        description VARCHAR (1024),
                        rating NUMERIC(3, 1),
                        price NUMERIC(6, 2),
-                       picturePath VARCHAR (1024)
+                       picturePath VARCHAR (1024),
+                       review VARCHAR REFERENCES review(review_id)
 );
 
 create table review (

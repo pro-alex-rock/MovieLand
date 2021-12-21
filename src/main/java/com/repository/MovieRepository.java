@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
     Optional<List<Movie>> getAllMovie(SortingCredentials sortingCredentials);
     Optional<List<Movie>> getRandom();
-    Optional<List<Movie>> getMoviesByGenre(String genre, SortingCredentials sortingCredentials);
+    Optional<List<Movie>> getMovieByGenre(String genre, SortingCredentials sortingCredentials);
 }
