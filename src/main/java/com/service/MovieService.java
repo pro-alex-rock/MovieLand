@@ -1,8 +1,9 @@
 package com.service;
 
+import com.dto.ThinMovieDto;
 import com.repository.MovieDao;
-import com.repository.mapper.modelMapper.MovieMapper;
-import com.dto.MovieDto;
+import com.repository.mapper.modelMapper.MovieThickMapper;
+import com.repository.mapper.modelMapper.MovieThinMapper;
 import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.slf4j.Logger;
@@ -18,20 +19,20 @@ public class MovieService {
     private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
     private final MovieDao movieDao;
     //private final MovieRepository movieRepository;
-    private final MovieMapper movieMapper;
+    private final MovieThinMapper movieThinMapper;
 
-    public MovieService(MovieDao movieDao, MovieMapper movieMapper) {
+    public MovieService(MovieDao movieDao, MovieThinMapper movieThinMapper) {
         this.movieDao = movieDao;
-        this.movieMapper = movieMapper;
+        this.movieThinMapper = movieThinMapper;
     }
 
-    public List<MovieDto> getAll(SortingCredentials sortingCredentials) {
+    public List<ThinMovieDto> getAll(SortingCredentials sortingCredentials) {
         Optional<List<Movie>> optionalMovies = movieDao.getAllMovie(sortingCredentials);
-        List<MovieDto> moviesDto = new ArrayList<>();
+        List<ThinMovieDto> moviesDto = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
             for (Movie movie : movies) {
-                moviesDto.add(movieMapper.toDto(movie));
+                moviesDto.add(movieThinMapper.toDto(movie));
             }
         }
         logger.info("Delivered all movies: {}. Column for sorting - {},  sorting type - {}",
@@ -39,30 +40,34 @@ public class MovieService {
         return moviesDto;
     }
 
-    public List<MovieDto> getRandom() {
+    public List<ThinMovieDto> getRandom() {
         Optional<List<Movie>> optionalMovies = movieDao.getRandom();
-        List<MovieDto> moviesDto = new ArrayList<>();
+        List<ThinMovieDto> moviesDto = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
             for (Movie movie : movies) {
-                moviesDto.add(movieMapper.toDto(movie));
+                moviesDto.add(movieThinMapper.toDto(movie));
             }
         }
         logger.info("Delivered random movies: {}, count - {}", moviesDto, moviesDto.size());
         return moviesDto;
     }
 
-    public List<MovieDto> getMoviesByGenre(String genre, SortingCredentials sortingCredentials) {
+    public List<ThinMovieDto> getMoviesByGenre(String genre, SortingCredentials sortingCredentials) {
         Optional<List<Movie>> optionalMovies = movieDao.getMoviesByGenre(genre, sortingCredentials);
-        List<MovieDto> moviesDto = new ArrayList<>();
+        List<ThinMovieDto> moviesDto = new ArrayList<>();
         if (optionalMovies.isPresent()) {
             List<Movie> movies = optionalMovies.get();
             for (Movie movie : movies) {
-                moviesDto.add(movieMapper.toDto(movie));
+                moviesDto.add(movieThinMapper.toDto(movie));
             }
         }
         logger.info("Delivered movies {} by genre: {}. Column for sorting - {},  sorting type - {}",
                 moviesDto,  genre, sortingCredentials.getSortingField(), sortingCredentials.getSortDirection());
         return moviesDto;
+    }
+
+    public MovieThickMapper getMovieById() {
+        return null;
     }
 }

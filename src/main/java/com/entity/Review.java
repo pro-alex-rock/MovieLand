@@ -27,7 +27,7 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "movie_id", nullable = false)
     @JsonIgnore
-    private Movie movieId;
+    private Movie movie;
 
     @Column(name = "review")
     private String review;

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieDto {
+public class ThinMovieDto {
     private int id;
     private String nameRussian;
     private String nameNative;

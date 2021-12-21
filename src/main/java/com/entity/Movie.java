@@ -29,10 +29,12 @@ public class Movie {
 
     @OneToMany(fetch = FetchType.LAZY)
     @Column(name =" country")
+    @JoinColumn(name = "country_id", insertable=false, updatable=false)
     private List<Country> country;
 
     @Column(name = "genre")
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genre_id", insertable=false, updatable=false)
     private List<Genre> genre;
 
     @Column(name = "description")
@@ -48,6 +50,16 @@ public class Movie {
     private String picturePath;
 
     @Column(name = "review")
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Review> review;
+    @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
+
+    public void addReview(Review review) {
+        reviews.add(review);
+        review.setMovie(this);
+    }
+
+    public void removeReview(Review review) {
+        reviews.remove(review);
+        review.setMovie(null);
+    }
 }
