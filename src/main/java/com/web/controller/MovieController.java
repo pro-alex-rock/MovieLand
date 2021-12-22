@@ -1,10 +1,10 @@
 package com.web.controller;
 
 import com.dto.ThinMovieDto;
+import com.entity.Movie;
 import com.model.SortDirection;
 import com.model.SortingCredentials;
 import com.model.SortingField;
-import com.repository.mapper.MovieThickMapper;
 import com.service.MovieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,8 +45,10 @@ public class MovieController {
         return movieService.getMoviesByGenre(genreId, new SortingCredentials(sortDirection, sortingField));
     }
 
-    @GetMapping(path = "/movieId")
-    public MovieThickMapper getMovieById() {
-        return null;
+    @GetMapping(path = "/{movieId}")
+    public Movie getMovieById(@PathVariable("movieId") int movieId) {
+        Movie movie = movieService.getMovieById(movieId);
+        logger.info("Came request to get movie by id '{}'.", movieId);
+        return movie;
     }
 }

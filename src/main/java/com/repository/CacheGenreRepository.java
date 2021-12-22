@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Repository
@@ -29,6 +30,10 @@ public class CacheGenreRepository {
         List<GenreDto> newListGenreDto = genreList.stream().map(genreMapper::toDto).collect(Collectors.toList());
         logger.info("Sent all genres: {} from cache to GenreService", newListGenreDto);
         return List.copyOf(newListGenreDto);
+    }
+
+    public Genre getGenreById(int id) {
+        return getCacheGenre().stream().filter(Predicate.isEqual(id)).map(genreMapper::toEntity).findAny().get();
     }
 
     @Scheduled(fixedRate = 4 * 60 * 60 * 1000)

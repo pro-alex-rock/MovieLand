@@ -30,12 +30,12 @@ public class Movie {
     @OneToMany(fetch = FetchType.LAZY)
     @Column(name =" country")
     @JoinColumn(name = "country_id", insertable=false, updatable=false)
-    private List<Country> country;
+    private List<Country> countries;
 
     @Column(name = "genre")
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id", insertable=false, updatable=false)
-    private List<Genre> genre;
+    private List<Genre> genres;
 
     @Column(name = "description")
     private String description;
@@ -52,6 +52,15 @@ public class Movie {
     @Column(name = "review")
     @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
+
+    public void addCountry(Country cntr) {
+        countries.add(cntr);
+    }
+
+    public void removeCountry(Country cntr) {
+        countries.remove(cntr);
+        cntr.setCountry(null);
+    }
 
     public void addReview(Review review) {
         reviews.add(review);
@@ -87,20 +96,20 @@ public class Movie {
         this.yearOfRelease = yearOfRelease;
     }
 
-    public List<Country> getCountry() {
-        return country;
+    public List<Country> getCountries() {
+        return countries;
     }
 
-    public void setCountry(List<Country> country) {
-        this.country = country;
+    public void setCountries(List<Country> country) {
+        this.countries = country;
     }
 
-    public List<Genre> getGenre() {
-        return genre;
+    public List<Genre> getGenres() {
+        return genres;
     }
 
-    public void setGenre(List<Genre> genre) {
-        this.genre = genre;
+    public void setGenres(List<Genre> genre) {
+        this.genres = genre;
     }
 
     public String getDescription() {
