@@ -4,7 +4,7 @@ import com.dto.ThinMovieDto;
 import com.model.SortDirection;
 import com.model.SortingCredentials;
 import com.model.SortingField;
-import com.repository.mapper.modelMapper.MovieThickMapper;
+import com.repository.mapper.MovieThickMapper;
 import com.service.MovieService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ public class MovieController {
     }
 
     @GetMapping(path = "/genre/{genreId}/")
-    public List<ThinMovieDto> getMoviesByGenre(@PathVariable("genreId") String genreId
+    public List<ThinMovieDto> getMoviesByGenre(@PathVariable("genreId") int genreId
             , @RequestParam(value = "rating", required = false) SortDirection sortDirection
             , @RequestParam(value = "price ", required = false) SortingField sortingField) {
         logger.info("Came request to get movies by genre '{}'. Column for sorting - {},  sorting direction - {}", sortingField, sortDirection, genreId);

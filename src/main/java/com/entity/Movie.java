@@ -62,4 +62,84 @@ public class Movie {
         reviews.remove(review);
         review.setMovie(null);
     }
+
+    public String getNameRussian() {
+        return nameRussian;
+    }
+
+    public void setNameRussian(String nameRussian) {
+        this.nameRussian = nameRussian;
+    }
+
+    public String getNameNative() {
+        return nameNative;
+    }
+
+    public void setNameNative(String nameNative) {
+        this.nameNative = nameNative;
+    }
+
+    public int getYearOfRelease() {
+        return yearOfRelease;
+    }
+
+    public void setYearOfRelease(int yearOfRelease) {
+        this.yearOfRelease = yearOfRelease;
+    }
+
+    public List<Country> getCountry() {
+        return country;
+    }
+
+    public void setCountry(List<Country> country) {
+        this.country = country;
+    }
+
+    public List<Genre> getGenre() {
+        return genre;
+    }
+
+    public void setGenre(List<Genre> genre) {
+        this.genre = genre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 }

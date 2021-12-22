@@ -5,7 +5,7 @@ public enum SortingField {
     RATING("rating"),
     PRICE("price");
 
-    private final String value;
+    private String value;
 
     SortingField(String value) {
         this.value = value;

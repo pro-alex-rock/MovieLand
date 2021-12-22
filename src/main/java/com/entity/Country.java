@@ -19,4 +19,23 @@ public class Country {
 
     @Column(name = "country")
     private String country;
+
+    public Country() {
+    }
+
+    public Country(String country) {
+        this.country = country;
+    }
+
+    public int getCountry_id() {
+        return country_id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }

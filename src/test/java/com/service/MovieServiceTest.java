@@ -1,7 +1,6 @@
 package com.service;
 
 import com.dto.ThinMovieDto;
-import com.repository.MovieDao;
 import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.junit.jupiter.api.Assertions;

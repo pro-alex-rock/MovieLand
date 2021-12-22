@@ -1,4 +1,4 @@
-package com.repository.mapper.modelMapper;
+package com.repository.mapper;
 
 import com.dto.GenreDto;
 import com.entity.Genre;

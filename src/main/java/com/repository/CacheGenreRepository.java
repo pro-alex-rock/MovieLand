@@ -2,7 +2,7 @@ package com.repository;
 
 import com.dto.GenreDto;
 import com.entity.Genre;
-import com.repository.mapper.modelMapper.GenreMapper;
+import com.repository.mapper.GenreMapper;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

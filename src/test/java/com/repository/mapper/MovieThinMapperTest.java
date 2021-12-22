@@ -1,13 +1,15 @@
 package com.repository.mapper;
 
 import com.dto.ThinMovieDto;
-import com.repository.mapper.modelMapper.MovieThinMapper;
+import com.entity.Country;
+import com.entity.Genre;
 import com.entity.Movie;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -23,8 +25,8 @@ class MovieThinMapperTest {
         movie.setNameRussian("Название");
         movie.setNameNative("Title");
         movie.setYearOfRelease(2000);
-        movie.setCountry("Country");
-        movie.setGenre("action");
+        movie.setCountry(List.of(new Country("Country")));
+        movie.setGenre(List.of(new Genre("action")));
         movie.setDescription("Description");
         movie.setRating(8.0);
         movie.setPrice(new BigDecimal(10));
