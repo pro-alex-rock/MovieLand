@@ -5,23 +5,34 @@ create table users (
                        alias VARCHAR (250) UNIQUE NOT NULL
 );
 
+create table IF NOT EXISTS genre (
+                       genre_id SERIAL primary key NOT NULL,
+                       genre VARCHAR (64)
+);
+
+create table country (
+                       country_id SERIAL primary key,
+                       country VARCHAR (250)
+);
+
 
 create table movie (
                        movie_id SERIAL primary key,
-                       title_russian_movie VARCHAR (350) UNIQUE NOT NULL,
-                       title_native_movie VARCHAR (350) UNIQUE NOT NULL,
+                       name_russian VARCHAR (350) UNIQUE NOT NULL,
+                       name_native VARCHAR (350) UNIQUE NOT NULL,
                        year INTEGER,
-                       country VARCHAR (250),
-                       genre_id VARCHAR (250),
+                       country VARCHAR REFERENCES country(country_id),
+                       genre VARCHAR REFERENCES genre(genre_id),
                        description VARCHAR (1024),
                        rating NUMERIC(3, 1),
                        price NUMERIC(6, 2),
-                       poster_link VARCHAR (1024)
+                       picturePath VARCHAR (1024),
+                       review VARCHAR REFERENCES review(review_id)
 );
 
 create table review (
-                        review_id SERIAL primary key,
-                        user_id INTEGER REFERENCES users(user_id),
-                        movie_id INTEGER REFERENCES movie(movie_id),
-                        review VARCHAR (1024) UNIQUE NOT NULL
+                       review_id SERIAL primary key,
+                       user_id INTEGER REFERENCES users(user_id),
+                       movie_id INTEGER REFERENCES movie(movie_id),
+                       review VARCHAR (1024) UNIQUE NOT NULL
 );

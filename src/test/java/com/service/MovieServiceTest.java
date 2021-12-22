@@ -1,8 +1,7 @@
 package com.service;
 
-import com.dao.MovieDao;
-import com.dto.MovieDto;
-import com.model.Movie;
+import com.dto.ThinMovieDto;
+import com.entity.Movie;
 import com.model.SortingCredentials;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -40,17 +39,17 @@ class MovieServiceTest {
         movie.setPrice(new BigDecimal("10.00"));
         movie.setPicturePath("Poster_link");
 
-        MovieDto expectedMovieDto = new MovieDto();
-        expectedMovieDto.setNameRussian("Название");
-        expectedMovieDto.setNameNative("Title");
-        expectedMovieDto.setYearOfRelease(2000);
-        expectedMovieDto.setRating(8.0);
-        expectedMovieDto.setPrice(new BigDecimal("10.00"));
-        List<MovieDto> expectedMoviesDto = List.of(expectedMovieDto);
+        ThinMovieDto expectedThinMovieDto = new ThinMovieDto();
+        expectedThinMovieDto.setNameRussian("Название");
+        expectedThinMovieDto.setNameNative("Title");
+        expectedThinMovieDto.setYearOfRelease(2000);
+        expectedThinMovieDto.setRating(8.0);
+        expectedThinMovieDto.setPrice(new BigDecimal("10.00"));
+        List<ThinMovieDto> expectedMoviesDto = List.of(expectedThinMovieDto);
 
-        when(movieService.getAll(sortingCredentials)).thenReturn(List.of(expectedMovieDto));
+        when(movieService.getAll(sortingCredentials)).thenReturn(List.of(expectedThinMovieDto));
         when(movieDao.getAllMovie(sortingCredentials)).thenReturn(Optional.of(List.of(movie)));
-        List<MovieDto> actualMoviesDto = movieService.getAll(sortingCredentials);
+        List<ThinMovieDto> actualMoviesDto = movieService.getAll(sortingCredentials);
         Assertions.assertEquals(expectedMoviesDto.get(0).getNameRussian(), actualMoviesDto.get(0).getNameRussian());
         Assertions.assertEquals(expectedMoviesDto.get(0).getNameNative(), actualMoviesDto.get(0).getNameNative());
         Assertions.assertEquals(expectedMoviesDto.get(0).getYearOfRelease(), actualMoviesDto.get(0).getYearOfRelease());

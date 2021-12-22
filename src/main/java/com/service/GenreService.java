@@ -1,6 +1,6 @@
 package com.service;
 
-import com.dao.CacheGenreRepository;
+import com.repository.CacheGenreRepository;
 import com.dto.GenreDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
