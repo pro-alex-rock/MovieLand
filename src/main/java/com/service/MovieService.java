@@ -1,10 +1,10 @@
 package com.service;
 
 import com.dto.ThinMovieDto;
+import com.entity.Genre;
 import com.entity.Movie;
 import com.model.SortingCredentials;
 import com.repository.MovieRepository;
-import com.repository.mapper.MovieThickMapper;
 import com.repository.mapper.MovieThinMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,10 +18,12 @@ import java.util.stream.Collectors;
 public class MovieService {
     private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
     private final MovieRepository movieRepository;
+    private final GenreService genreService;
     private final MovieThinMapper movieThinMapper;
 
-    public MovieService(MovieRepository movieRepository, MovieThinMapper movieThinMapper) {
+    public MovieService(MovieRepository movieRepository, GenreService genreService, MovieThinMapper movieThinMapper) {
         this.movieRepository = movieRepository;
+        this.genreService = genreService;
         this.movieThinMapper = movieThinMapper;
     }
 
@@ -44,14 +46,17 @@ public class MovieService {
     }
 
     public List<ThinMovieDto> getMoviesByGenre(int genreId, SortingCredentials sortingCredentials) {
-        List<Movie> movies = movieRepository.findAllMoviesByGenreId(genreId);
+        Genre genre = genreService.getGenreById(genreId);
+        List<Movie> movies = movieRepository.findAllMoviesByGenreId(genre);
         List<ThinMovieDto> moviesDto = movies.stream().map(movieThinMapper::toDto).collect(Collectors.toList());
         logger.info("Delivered movies {} by genreId: {}. Column for sorting - {},  sorting type - {}",
                 moviesDto,  genreId, sortingCredentials.getSortingField(), sortingCredentials.getSortDirection());
         return moviesDto;
     }
 
-    public MovieThickMapper getMovieById() {
-        return null;
+    public Movie getMovieById(int id) {
+        Movie movie = movieRepository.findById(id);
+        logger.info("Delivered movie {} by Id: {}.", movie,  id);
+        return movie;
     }
 }

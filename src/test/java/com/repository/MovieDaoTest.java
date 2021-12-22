@@ -33,7 +33,7 @@ class MovieDaoTest extends IntegrationTestBase {
             assertEquals("Matrix", entity.get(0).getNameNative());
             assertEquals(1999, entity.get(0).getYearOfRelease());
             assertEquals(1999, entity.get(0).getYearOfRelease());
-            assertEquals("фантастика", entity.get(0).getGenre());
+            assertEquals("фантастика", entity.get(0).getGenres());
             assertEquals("Мир Матрицы — это иллюзия", contains(entity.get(0).getDescription()));
             assertEquals(10.0, entity.get(0).getRating());
             assertEquals(new BigDecimal("100.00"), entity.get(0).getPrice());

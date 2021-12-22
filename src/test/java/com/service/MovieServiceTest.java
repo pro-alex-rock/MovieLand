@@ -33,7 +33,7 @@ class MovieServiceTest {
         movie.setNameRussian("Название");
         movie.setNameNative("Title");
         movie.setYearOfRelease(2000);
-        movie.setGenre("action");
+        movie.setGenres("action");
         movie.setDescription("Description");
         movie.setRating(8.0);
         movie.setPrice(new BigDecimal("10.00"));

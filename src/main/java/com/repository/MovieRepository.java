@@ -1,5 +1,6 @@
 package com.repository;
 
+import com.entity.Genre;
 import com.entity.Movie;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
@@ -18,7 +18,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
             "WHERE movie_id IN (SELECT movie_id FROM movie ORDER BY random() LIMIT 3)")
     List<Movie> findRandomMovie();
 
-    List<Movie> findAllMoviesByGenreId(int genreId);
+    List<Movie> findAllMoviesByGenreId(Genre genre);
 
-    Optional<Movie> findById(int id);
+    Movie findById(int id);
 }

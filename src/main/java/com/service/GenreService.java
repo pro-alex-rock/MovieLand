@@ -1,5 +1,6 @@
 package com.service;
 
+import com.entity.Genre;
 import com.repository.CacheGenreRepository;
 import com.dto.GenreDto;
 import org.slf4j.Logger;
@@ -21,5 +22,9 @@ public class GenreService {
         List<GenreDto> cachedGenres = cacheGenreRepository.getCacheGenre();
         logger.info("Delivered all genres: {} from cache", cachedGenres);
         return cachedGenres;
+    }
+
+    public Genre getGenreById(int id) {
+        return cacheGenreRepository.getGenreById(id);
     }
 }

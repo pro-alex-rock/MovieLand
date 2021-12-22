@@ -54,7 +54,7 @@ class MovieControllerITest extends IntegrationTestBase {
 
     @Test
     public void shouldReturnMoviesByGenre() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/genre/{genreId}", "фантастика"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/genre/{genreId}", 8))
                 .andDo(print()).andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andExpect(jsonPath("$.nameRussian").value("Матрица"))
@@ -150,5 +150,19 @@ class MovieControllerITest extends IntegrationTestBase {
         assertEquals("Матрица 2", contains(content));
     }
 
-
+    @Test
+    public void shouldReturnMovieById() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/{movieId}", 2))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(jsonPath("$.nameRussian").value("Матрица 2"))
+                .andExpect(jsonPath("$.nameNative").value("Matrix 2"))
+                .andExpect(jsonPath("$.year").value(2000))
+                .andExpect(jsonPath("$.rating").value(10.0))
+                .andExpect(jsonPath("$.price").value(100.00))
+                .andExpect(jsonPath("$.picturePath")
+                        .value("https://upload.wikimedia.org/wikipedia/ru/6/62/Matrix_reloaded.jpg"))
+                .andExpect(jsonPath("$.countries.country").value("США"))
+                .andExpect(jsonPath("$.genres.genre").value("фантастика"));
+    }
 }
