@@ -2,7 +2,8 @@ create table users (
                        user_id SERIAL primary key,
                        name VARCHAR (250) UNIQUE NOT NULL,
                        email VARCHAR (250) UNIQUE NOT NULL,
-                       alias VARCHAR (250) UNIQUE NOT NULL
+                       password VARCHAR (250) UNIQUE NOT NULL,
+                       role VARCHAR(30)
 );
 
 create table IF NOT EXISTS genre (
