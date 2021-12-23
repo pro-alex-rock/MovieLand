@@ -9,14 +9,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Data
-/*@AllArgsConstructor
-@NoArgsConstructor*/
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class User implements UserDetails {
+
+    private Set<? extends GrantedAuthority> grantedAuthorities;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +42,55 @@ public class User implements UserDetails {
     @JsonManagedReference
     private Set<Role> roles;
 
+    private boolean isAccountNonExpired;
+    private boolean isAccountNonLocked;
+    private boolean isCredentialsNonExpired;
+    private boolean isEnable;
+
     public User() {
+    }
+
+    public User(Set<? extends GrantedAuthority> grantedAuthorities,
+                String name, String email, String password,
+                String passwordConfirm, Set<Role> roles,
+                boolean isAccountNonExpired, boolean isAccountNonLocked,
+                boolean isCredentialsNonExpired, boolean isEnable) {
+        this.grantedAuthorities = grantedAuthorities;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.passwordConfirm = passwordConfirm;
+        this.roles = roles;
+        this.isAccountNonExpired = isAccountNonExpired;
+        this.isAccountNonLocked = isAccountNonLocked;
+        this.isCredentialsNonExpired = isCredentialsNonExpired;
+        this.isEnable = isEnable;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        //return getRoles();
+        return grantedAuthorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return isAccountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return isCredentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return isEnable;
     }
 
     public int getUserId() {
@@ -68,11 +119,6 @@ public class User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getRoles();
-    }
-
-    @Override
     public String getPassword() {
         return password;
     }
@@ -95,25 +141,5 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

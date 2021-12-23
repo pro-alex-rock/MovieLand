@@ -2,43 +2,45 @@ package com.service;
 
 import com.entity.Role;
 import com.entity.User;
-import com.repository.RoleRepository;
 import com.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.web.controller.MovieManagementController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserService implements UserDetailsService {
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    @PersistenceContext
-    private EntityManager em;
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
+    /*@PersistenceContext
+    private EntityManager em;*/
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    /*@Autowired
     RoleRepository roleRepository;
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    BCryptPasswordEncoder bCryptPasswordEncoder;*/
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return user;
+        logger.info("Came request to UserService to load user by name: {}", username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() ->
+                new UsernameNotFoundException("User '" + username + "' not found."));
     }
 
-    public User findUserById(int userId) {
+    /*public User findUserById(int userId) {
         Optional<User> userFromDb = userRepository.findById(userId);
         return userFromDb.orElse(new User());
     }
@@ -63,7 +65,7 @@ public class UserService implements UserDetailsService {
         if (userRepository.findById(userId).isPresent()) {
             userRepository.deleteById(userId);
         }
-    }
+    }*/
 
     /*public List<User> usergtList(int idMin) {
         return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)

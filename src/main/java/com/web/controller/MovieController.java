@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = {"/", "/api/v1/movie"}, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = {"/api/v1/movie"}, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MovieController {
     private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
     private final MovieService movieService;
