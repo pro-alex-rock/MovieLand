@@ -1,10 +1,12 @@
 package com.service;
 
+import com.dto.ThickMovieDto;
 import com.dto.ThinMovieDto;
 import com.entity.Genre;
 import com.entity.Movie;
 import com.model.SortingCredentials;
 import com.repository.MovieRepository;
+import com.repository.mapper.MovieThickMapper;
 import com.repository.mapper.MovieThinMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +22,13 @@ public class MovieService {
     private final MovieRepository movieRepository;
     private final GenreService genreService;
     private final MovieThinMapper movieThinMapper;
+    private final MovieThickMapper movieThickMapper;
 
-    public MovieService(MovieRepository movieRepository, GenreService genreService, MovieThinMapper movieThinMapper) {
+    public MovieService(MovieRepository movieRepository, GenreService genreService, MovieThinMapper movieThinMapper, MovieThickMapper movieThickMapper) {
         this.movieRepository = movieRepository;
         this.genreService = genreService;
         this.movieThinMapper = movieThinMapper;
+        this.movieThickMapper = movieThickMapper;
     }
 
     public List<ThinMovieDto> getAll(SortingCredentials sortingCredentials) {
@@ -58,5 +62,20 @@ public class MovieService {
         Movie movie = movieRepository.findById(id);
         logger.info("Delivered movie {} by Id: {}.", movie,  id);
         return movie;
+    }
+
+    public void addMovie(ThickMovieDto movieDto) {
+        Movie movie = movieThickMapper.toEntity(movieDto);
+        movieRepository.save(movie);
+        logger.info("Added new movie: {}.", movie);
+    }
+
+    public void deleteMovie(int movieId) {
+        movieRepository.deleteById(movieId);
+        logger.info("Deleted movie with id: {}.", movieId);
+    }
+
+    public void editMovie(int movieId, ThickMovieDto movieDto) {
+
     }
 }

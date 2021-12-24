@@ -1,0 +1,74 @@
+ 23:12:44 INFO  [main] com.MovieLandApplication - Application started. 
+ 23:12:45 DEBUG [Thread-0] o.s.b.d.r.c.RestartClassLoader - Created RestartClassLoader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5479b2ff 
+ 23:12:45 INFO  [restartedMain] com.MovieLandApplication - Application started. 
+ 23:12:46 INFO  [restartedMain] com.MovieLandApplication - Starting MovieLandApplication using Java 17.0.1 on ubuntu-VirtualBox with PID 8170 (/home/ubuntu/IdeaProjects/MovieLand/target/classes started by ubuntu in /home/ubuntu/IdeaProjects/MovieLand) 
+ 23:12:46 DEBUG [restartedMain] com.MovieLandApplication - Running with Spring Boot v2.6.1, Spring v5.3.13 
+ 23:12:46 INFO  [restartedMain] com.MovieLandApplication - No active profile set, falling back to default profiles: default 
+ 23:12:46 DEBUG [restartedMain] o.s.boot.SpringApplication - Loading source class com.MovieLandApplication 
+ 23:12:47 DEBUG [restartedMain] o.s.b.d.restart.ChangeableUrls - Matching URLs for reloading : [file:/home/ubuntu/IdeaProjects/MovieLand/target/classes/] 
+ 23:12:47 DEBUG [restartedMain] o.s.b.d.settings.DevToolsSettings - Included patterns for restart : [] 
+ 23:12:47 DEBUG [restartedMain] o.s.b.d.settings.DevToolsSettings - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/] 
+ 23:12:47 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+ 23:12:47 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+ 23:12:47 DEBUG [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@19ee3912 
+ 23:12:47 DEBUG [restartedMain] o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' 
+ 23:12:47 DEBUG [restartedMain] o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory' 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/CacheGenreRepository.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/GenreRepository.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/MovieRepository.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/GenreMapper.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/GenreMapperImpl.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/MovieThickMapper.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/MovieThickMapperImpl.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/MovieThinMapper.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/MovieThinMapperImpl.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/repository/mapper/modelMapper/DefaultMapperImpl.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/security/SecurityConfig.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/service/GenreService.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/service/MovieService.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/web/controller/GenreController.class] 
+ 23:12:47 DEBUG [restartedMain] o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/home/ubuntu/IdeaProjects/MovieLand/target/classes/com/web/controller/MovieController.class] 
+ 23:12:48 WARN  [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.MovieLandApplication]; nested exception is java.io.FileNotFoundException: class path resource [com/repository/mapper/modelMapper/DefaultMapper.class] cannot be opened because it does not exist 
+ 23:12:48 DEBUG [restartedMain] o.s.boot.devtools.restart.Restarter - Creating new Restarter for thread Thread[main,5,main] 
+ 23:12:48 DEBUG [restartedMain] o.s.boot.devtools.restart.Restarter - Immediately restarting application 
+ 23:12:48 DEBUG [restartedMain] o.s.boot.devtools.restart.Restarter - Starting application com.MovieLandApplication with URLs [file:/home/ubuntu/IdeaProjects/MovieLand/target/classes/] 
+ 23:12:48 ERROR [restartedMain] o.s.boot.SpringApplication - Application run failed 
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [com.MovieLandApplication]; nested exception is java.io.FileNotFoundException: class path resource [com/repository/mapper/modelMapper/DefaultMapper.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:189)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:331)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:247)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:311)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:112)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:746)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:564)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at com.MovieLandApplication.main(MovieLandApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.io.FileNotFoundException: class path resource [com/repository/mapper/modelMapper/DefaultMapper.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:199)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:55)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:49)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:86)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:73)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:696)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getInterfaces(ConfigurationClassParser.java:1024)
+	at org.springframework.context.annotation.ConfigurationClassParser.processInterfaces(ConfigurationClassParser.java:386)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:332)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:199)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:304)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:250)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:207)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:175)
+	... 18 common frames omitted
